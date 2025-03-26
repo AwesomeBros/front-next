@@ -2,6 +2,7 @@ import { ThemeProvider } from "@/components/ui/theme-provider";
 import "@/styles/globals.css";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { ToastContainer } from "react-toastify";
 
 const pretendard = localFont({
   src: "../fonts/PretendardVariable.woff2",
@@ -29,6 +30,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <ToastContainer />
         </ThemeProvider>
       </body>
     </html>
