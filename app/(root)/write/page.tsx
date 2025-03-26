@@ -3,10 +3,12 @@ import { Input } from "@/components/ui/input";
 import SubmitButton from "@/components/ui/submit-button";
 import { Textarea } from "@/components/ui/textarea";
 import { insertPost } from "@/lib/actions/post.actions";
+import { useRouter } from "next/navigation";
 import { useActionState, useEffect } from "react";
 import { toast } from "react-toastify";
 
 export default function WritePage() {
+  const router = useRouter();
   const [state, action] = useActionState(insertPost, undefined);
 
   useEffect(() => {
@@ -24,6 +26,7 @@ export default function WritePage() {
   useEffect(() => {
     if (state?.status === "success") {
       toast.success(state.message);
+      router.push("/");
     }
   }, [state?.status]);
 
