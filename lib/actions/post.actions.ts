@@ -18,13 +18,14 @@ export async function insertPost(
     return { error: validationFields.error.flatten().fieldErrors };
   }
 
-  const response = await axios.post(`${SERVER_URL}/api/post`);
+  const response = await axios.post(
+    `${SERVER_URL}/post`,
+    validationFields.data
+  );
+  console.log(response);
 
   if (response.status === 400) {
     return { error: response.data.error };
   }
-  return {
-    status: "success",
-    message: "게시글이 작성되었습니다.",
-  };
+  return response.data;
 }

@@ -7,8 +7,11 @@ export type FormState =
         author?: string[];
         content?: string[];
       };
-      status?: string;
+      status?: number;
       message?: string;
+      body?: {
+        id: number;
+      };
     }
   | undefined;
 

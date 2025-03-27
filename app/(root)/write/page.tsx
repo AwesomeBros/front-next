@@ -24,11 +24,14 @@ export default function WritePage() {
   }, [state?.error]);
 
   useEffect(() => {
-    if (state?.status === "success") {
+    console.log("state?.status changed:", state?.status);
+    if (state?.status === 201) {
       toast.success(state.message);
-      router.push("/");
+      if (state.body) router.push(`/${state.body}`);
     }
   }, [state?.status]);
+
+  console.log("state", state);
 
   return (
     <form
