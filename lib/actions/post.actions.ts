@@ -29,3 +29,11 @@ export async function insertPost(
   }
   return response.data;
 }
+
+export async function findPostById(id: number) {
+  const response = await axios.get(`${SERVER_URL}/post/${id}`);
+  if (response.status === 404) {
+    return { error: response.data.error };
+  }
+  return response.data;
+}
